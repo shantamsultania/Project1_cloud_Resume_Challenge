@@ -33,6 +33,15 @@ jobs:
     steps:
       - name: checkout github
         uses: actions/checkout@master
+      - name: approval required
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: shantamsultania
+          minimum-approvals: 1
+          issue-title: "Deploying v1.0.0 to prod"
+          issue-body: "Review the code before deployment, then approve or deny the deployment of v1.0.0 to prod."
+          exclude-workflow-initiator-as-approver: false
       - name: upload to S3 bucket
         uses: jakejarvis/s3-sync-action@master
         with:
