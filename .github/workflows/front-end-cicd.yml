@@ -1,0 +1,51 @@
+name: Upload frontend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Resume-website/**'
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  AWS_REGION: 'us-east-1'
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  list-changesg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Changed Files
+        run: |
+          echo "Changed Files:"
+          echo "${{ github.event_name }} event"
+          echo "Modified Files: ${{ github.event.head_commit.modified }}"
+          echo "Added Files: ${{ github.event.head_commit.added }}"
+          echo "Removed Files: ${{ github.event.head_commit.removed }}"
+  front-end-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout github
+        uses: actions/checkout@master
+      - name: approval required
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: shantamsultania
+          minimum-approvals: 1
+          issue-title: "Deploying v1.0.0 to prod"
+          issue-body: "Review the Code then approve or deny the deployment of v1.0.0 to prod."
+          exclude-workflow-initiator-as-approver: false
+      - name: upload to S3 bucket
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl private --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_REGION: 'us-east-1'
+          SOURCE_DIR: 'Resume-website'
