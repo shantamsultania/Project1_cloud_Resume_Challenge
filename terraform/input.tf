@@ -1,0 +1,12 @@
+variable "aws_bucket_name" {
+
+  description = "this is sample bucket name"
+  type = string
+  default = "mybucketss-new1.com"
+}
+
+variable "aws_role_arn" {
+
+  description = "This is the AWS I AM role ARN"
+  type = string
+}

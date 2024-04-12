@@ -18,7 +18,7 @@ env:
 
 
 jobs:
-  list-changesg:
+  list-changes:
     runs-on: ubuntu-latest
     steps:
       - name: List Changed Files
