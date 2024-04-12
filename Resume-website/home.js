@@ -24,7 +24,7 @@
 //}
 
 
-const VISITORS_ENDPOINT_LAMBDA_CROS = "https://xveab2q63m5b6g4dyfiqokd7ra0gcqzi.lambda-url.us-east-1.on.aws/"
+const VISITORS_ENDPOINT_LAMBDA_CROS = "https://illmldpp7u55iu4mw4h27bd7vy0kqlmr.lambda-url.us-east-1.on.aws/"
 
 var display = document.getElementById("counter-output");
 
