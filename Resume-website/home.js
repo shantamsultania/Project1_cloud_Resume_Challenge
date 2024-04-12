@@ -24,11 +24,9 @@
 //}
 
 
-const VISITORS_ENDPOINT =  "https://qs5835eazb.execute-api.us-east-1.amazonaws.com/prod";
-const VISITORS_ENDPOINT_LAMBDA_CROS = "https://zqnxfoio4w6mo5tffgyx5zlpya0xdtly.lambda-url.us-east-1.on.aws/"
+const VISITORS_ENDPOINT_LAMBDA_CROS = "https://xveab2q63m5b6g4dyfiqokd7ra0gcqzi.lambda-url.us-east-1.on.aws/"
+
 var display = document.getElementById("counter-output");
-
-
 
 async function updateCounter() {
     return await fetch(VISITORS_ENDPOINT_LAMBDA_CROS)
