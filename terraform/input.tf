@@ -16,5 +16,3 @@ variable "table_name" {
   type        = string
 }
 
-# added code checks
-
