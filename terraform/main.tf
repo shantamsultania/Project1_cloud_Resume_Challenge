@@ -78,7 +78,7 @@ resource "aws_lambda_function" "myCounterApiFunc" {
   filename         = data.archive_file.zip_the_python_code.output_path
   source_code_hash = data.archive_file.zip_the_python_code.output_base64sha256
 
-  function_name = "myfuncnew"
+  function_name = var.lambda_function_name
   role          = var.aws_role_arn
   handler       = "lambdaCode.lambda_handler"
   runtime       = "python3.8"

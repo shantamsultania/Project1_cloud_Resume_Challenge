@@ -15,3 +15,9 @@ variable "table_name" {
   description = "This is name of DynamoDb Table"
   type        = string
 }
+
+variable "lambda_function_name" {
+  description = "This is name of lambda_function"
+  type        = string
+}
+
