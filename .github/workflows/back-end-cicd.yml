@@ -17,7 +17,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  list-changesg:
+  list-changes:
     runs-on: ubuntu-latest
     steps:
       - name: List Changed Files
@@ -43,7 +43,10 @@ jobs:
         run: terraform init
       - name: terraform plan and test
         working-directory: ./terraform
-        run: terraform plan
+        run: terraform plan \
+          -var="aws_bucket_name=${{ secrets.AWS_S3_BUCKET }}" \
+          -var="aws_role_arn=${{ secrets.AWS_IAM_ROLE }}" \
+          -var="table_name=${{ secrets.AWS_DB_TABLE_NAME }}"
       - name: approval required
         uses: trstringer/manual-approval@v1
         with:
@@ -55,4 +58,7 @@ jobs:
           exclude-workflow-initiator-as-approver: false
       - name: terraform apply to prod
         working-directory: ./terraform
-        run: terraform apply -no-color -input=false -auto-approve
+        run: terraform apply -auto-approve \
+          -var="aws_bucket_name=${{ secrets.AWS_S3_BUCKET }}" \
+          -var="aws_role_arn=${{ secrets.AWS_IAM_ROLE }}" \
+          -var="table_name=${{ secrets.AWS_DB_TABLE_NAME }}"
