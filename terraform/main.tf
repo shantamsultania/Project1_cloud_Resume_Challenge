@@ -91,7 +91,7 @@ resource "aws_lambda_function" "myCounterApiFunc" {
 }
 
 resource "aws_lambda_function_url" "url1" {
-  function_name = aws_lambda_function.myCounterApiFunc.function_name
+  function_name      = aws_lambda_function.myCounterApiFunc.function_name
   authorization_type = "NONE"
 }
 

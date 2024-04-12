@@ -61,4 +61,4 @@ jobs:
           exclude-workflow-initiator-as-approver: false
       - name: terraform apply to prod
         working-directory: ./terraform
-        run: terraform -chdir=terraform apply -auto-approve \ -var="aws_bucket_name=${{ secrets.AWS_S3_BUCKET }}" \ -var="aws_role_arn=${{ secrets.AWS_IAM_ROLE }}" \ -var="table_name=${{ secrets.AWS_DB_TABLE_NAME }}"
+        run: terraform apply  -var="aws_bucket_name=${{ secrets.AWS_S3_BUCKET }}"  -var="aws_role_arn=${{ secrets.AWS_IAM_ROLE }}"  -var="table_name=${{ secrets.AWS_DB_TABLE_NAME }}" -no-color -input=false -auto-approve
