@@ -85,7 +85,7 @@ resource "aws_lambda_function" "myCounterApiFunc" {
 
   environment {
     variables = {
-      DYNAMODB_TABLE = "MY_RESUME_VISITS"
+      DYNAMODB_TABLE = var.table_name
     }
   }
 }
