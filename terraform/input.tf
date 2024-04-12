@@ -15,5 +15,3 @@ variable "table_name" {
   description = "This is name of DynamoDb Table"
   type        = string
 }
-
-
