@@ -17,7 +17,7 @@ resource "aws_s3_bucket_website_configuration" "site" {
   bucket = aws_s3_bucket.my_aws_bucket_example02.id
 
   index_document {
-    suffix = "home.html"
+    suffix = "cv.html"
   }
 
   error_document {
