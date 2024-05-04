@@ -24,9 +24,11 @@
 //}
 
 
-const VISITORS_ENDPOINT_LAMBDA_CROS = "https://illmldpp7u55iu4mw4h27bd7vy0kqlmr.lambda-url.us-east-1.on.aws/"
-
+//const VISITORS_ENDPOINT_LAMBDA_CROS = "https://illmldpp7u55iu4mw4h27bd7vy0kqlmr.lambda-url.us-east-1.on.aws/"
+//const VISITORS_ENDPOINT_LAMBDA_CROS = "https://zqnxfoio4w6mo5tffgyx5zlpya0xdtly.lambda-url.us-east-1.on.aws/"
+const VISITORS_ENDPOINT_LAMBDA_CROS = "https://aj7aehpsepznxd6traq5uwcxsm0mbpxo.lambda-url.us-east-1.on.aws/"
 var display = document.getElementById("counter-output");
+
 
 async function updateCounter() {
     return await fetch(VISITORS_ENDPOINT_LAMBDA_CROS)
@@ -41,7 +43,9 @@ async function updateCounter() {
         console.log("log 2")
             console.log(receivedJson);
             const visitorCount = receivedJson.visits;
-            const textnode = document.createTextNode(visitorCount);
+            const visitorCountUpdated = visitorCount+" users "
+
+            const textnode = document.createTextNode(visitorCountUpdated);
             display.appendChild(textnode);
         })
         .catch(err => {

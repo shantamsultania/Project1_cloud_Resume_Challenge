@@ -33,6 +33,7 @@ $('.navbar').on('click', 'a[href^="#"]', function (event) {
 //}
 
 const VISITORS_ENDPOINT_LAMBDA = "https://aj7aehpsepznxd6traq5uwcxsm0mbpxo.lambda-url.us-east-1.on.aws/"
+var display = document.getElementById("counter-output");
 
 async function updateCounter() {
     return await fetch(VISITORS_ENDPOINT_LAMBDA)
